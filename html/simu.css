@@ -1,0 +1,288 @@
+body {
+    margin: 0px;
+}
+
+input, button {
+    outline: none;
+
+}
+
+img{
+    cursor: pointer;
+}
+input{
+    cursor:text;
+}
+
+* {
+    box-sizing: border-box;
+    cursor: default;
+    font-family: 'Roboto';
+}
+
+.conteiner-site{
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+    
+}
+
+.box-lateral{
+    display: flex;
+    flex-direction: column;
+
+    background-color: #2B3031;
+    min-height: 100vh;  
+}
+
+.box-lateral header{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    font-size: 25px;
+    font-weight: 700;
+
+    padding: 1.5em 3.5em 1.5em 2em;
+    color: white;
+}
+
+.box-lateral header span{
+    color: #EA10C7;
+}
+
+.ret-cinza{
+    background-color: #262626;
+    width: 100%;
+    height: 3em;
+}
+
+.box-opcoes{
+    display: flex;
+    flex-direction: row;
+    padding: 1.5em 1.4em 1em 3.2em;
+
+    justify-content: space-between;
+    color: white;
+}
+
+.box-opcoes button{
+    border: none;
+    background: none;
+}
+
+.box-aluno{
+    padding: 1em 1.4em 1em 3.2em;
+    background-color: white;
+
+    font-weight: 700;
+    border-left: 4px solid  #EA10C7;
+
+}
+
+.box-principal{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.box-cabecalho{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1em 2.5em;
+}
+
+.box-user-information{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+}
+
+.user-image{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    border-radius: 50%;
+}
+
+
+
+.notification{
+    justify-content: flex-start;
+
+    color: white;
+    background-color: #DB21BD;
+    border: 3px solid white;
+    border-radius: 50%;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: .7em;
+}
+
+.user-name{
+    font-weight: 400;
+    font-size: 16px;
+
+    color: #615858 ;
+    margin-left: 1em;
+}
+
+
+
+.box-images{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-evenly;
+    width: 8em;
+}
+
+.box-images button{
+
+    cursor: pointer;
+
+    background-color: rgb(70, 7, 172);
+    border-radius: 50%;
+    border: none;
+    padding: 1em;
+}
+
+.box-images img{
+ cursor: pointer;
+}
+
+.line{
+    border: solid 0.5px;
+    width: 95%;
+    color:#d3cbcb;
+    align-self: center  ;
+}
+.box-body{
+    background-color: #F5F5F5;
+    min-height: 100vh;
+
+    padding: 2.5em 2.5em;
+}
+
+.box-organization-body{
+    background-color: white;
+    padding: 2em 2.5em;
+    margin-bottom: 2em;
+}
+
+.box-alunos-adm{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-bottom: 1em;
+}
+
+
+.barra{
+    border:#986CDF 0.2em solid;
+    background-color: #986CDF;
+    border-radius: 1.3em;
+    height: 1.8em;
+    margin-right: 1em;
+}
+
+.aluno-novo{
+    font-size: 2em;
+    font-weight: 700;
+    color: #3C3939;
+}
+
+
+
+.inputs-cadastro{
+    display: flex;
+    flex-direction: row;
+}
+
+.botao-cadastrar{
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 0.5em;
+
+}
+
+.botao-cadastrar button{
+    
+    font-weight: 700;
+
+    background: #E911C6;
+    color: white;
+    border-radius: 2em;
+    padding: 0.6em 1.5em;
+    border: none;
+
+    cursor: pointer;
+}
+
+.format-inputs{
+    display: flex;
+    flex-direction: row;
+
+    margin-right: 2em;
+    padding: 0.5em 0em;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.format-inputs input {
+    margin-left: 0.5em;
+    border-radius: 0.3em;
+    border: solid 1px #A8A8A8;
+    height: 2em;
+}
+
+.inputs-esquerda{
+    margin-right: 2em
+}
+
+.tabela-usuarios{
+    border-collapse: collapse;
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 2em;
+}
+
+thead{
+    background-color: #986CDF;
+}
+
+th{
+    padding: 1.5em  2em;
+    color: white;
+    text-align: left;
+}
+
+
+
+td{
+    padding: 1.5em 2em;
+    color: #6D6868;
+}
+
+td button{
+    padding: 0.5em;
+    border-radius: 50%;
+    border:none;
+    background-color: #565656;
+    cursor: pointer;
+}
+
+.buttom-option{
+    padding: 1.5em 0em;
+}
