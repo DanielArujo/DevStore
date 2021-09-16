@@ -103,7 +103,6 @@ export default function Index() {
 
     useEffect( () => { listar() }, [] )
 
-
     
     return (
         
@@ -196,7 +195,9 @@ export default function Index() {
                                             <td title={item.nm_produto }>
                                                 {item.nm_produto != null && item.nm_produto.length >= 30 ? item.nm_produto.substr(0, 30) + '...' : item.nm_produto } 
                                             </td>
-                                            <td> {item.ds_categoria} </td>
+                                            <td title={item.ds_categoria}> 
+                                            {item.ds_categoria != null && item.ds_categoria >= 30 ? item.ds_categoria.substr(0, 30) + '...' : item.ds_categoria }
+                                                </td>
                                             <td> {item.vl_preco_por} </td>
                                             <td> {item.qtd_estoque} </td>
                                             <td className="buttom-option"> <button onClick={() => alterar(item)}> <img src="/assets/images/edit.svg" alt="" /> </button> </td>

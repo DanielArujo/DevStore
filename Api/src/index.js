@@ -25,6 +25,7 @@ try{
             return resp.send({erro: 'Produto ja cadastrado!'})
         }
 
+    
     if(isNaN(avaliacao) || avaliacao <= 0 ){
         return resp.send({erro: 'Campo "Avaliação" Invalido'})
     }
@@ -41,9 +42,9 @@ try{
         return resp.send({erro: 'Campo "Estoque" Invalido'})
     }
 
-    if(produto, categoria, imgProduto, produtoDesc == ''){
-        return resp.send({erro: 'Todos os campos devem ser preenchidos!'})
-    }
+    if(produto == '' || categoria == '' || imgProduto == '' || produtoDesc == ''){
+            return resp.send({erro: 'Todos os campos devem ser preenchidos!'})
+        }
 
     let r = await db.tb_produto.create({
         nm_produto: produto,
@@ -87,13 +88,17 @@ app.put('/produto/:id', async(req, resp) => {
             return resp.send({erro: 'Campo "Estoque" Invalido'})
         }
 
-        if(produto, categoria, imgProduto, produtoDesc == ''){
+        
+
+
+        if(produto == '' || categoria == '' || imgProduto == '' || produtoDesc == ''){
             return resp.send({erro: 'Todos os campos devem ser preenchidos!'})
         }
 
 
         
-        let r = await db.tb_produto.update({
+        let r = await db.tb_produto.update(
+        {
             nm_produto: produto,
             ds_categoria: categoria,
             vl_preco_de: precoDe,
