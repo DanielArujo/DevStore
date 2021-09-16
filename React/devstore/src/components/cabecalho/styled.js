@@ -14,11 +14,11 @@ const Container = styled.div`
     flex-direction: row;
     align-items: center;
 }
-.user-image{
+.user-image {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
-    border-radius: 50%;
+    border-radius: 45%;
     border: none;
 }
 

@@ -17,16 +17,20 @@ import { useState, useEffect } from 'react';
 import Api from '../../service/api';
 
 
-
 const api = new Api();
+
 
 export default function Index() {
 
-    const[alunos, setAlunos] = useState([])
-    const[nome, setNome] = useState('');
-    const[chamada, setChamada] = useState('');
-    const[curso, setCurso] = useState('');
-    const[turma, setTurma] = useState('');
+    const[catalogo, setCatalogo] = useState([])
+    const[produto, setProduto] = useState('');
+    const[categoria, setCategoria] = useState('');
+    const[preco, setPreco] = useState('');
+    const[avaliacao, setAvaliacao] = useState('');
+    const[precoDe, setPrecoDe] = useState('');
+    const[imagem, setImagem] = useState('');
+    const[descricao, setDescricao] = useState('');
+    const[estoque, setEstoque] = useState('');
     const[idAlterando, setIdAlerando] = useState(0);
 
     const loading = useRef(null)  
@@ -34,28 +38,28 @@ export default function Index() {
     async function listar() {
         let r = await api.listar();
         console.log(r);
-        setAlunos(r);  
+        setCatalogo(r);
     }
 
     async function inserir(){
         
         if(idAlterando === 0){
         loading.current.continuousStart();
-        let r = await api.inserir(nome, chamada, curso, turma);
+        let r = await api.inserir(produto, categoria, precoDe, preco, avaliacao, descricao , estoque, imagem);
             if(r.erro)
-                toast.error(r.erro)
+                toast.dark(r.erro)
             else{
-                toast.dark('Aluno inserido!!!');
+                toast.dark('Produto inserido!!!');
                 limparCampos();
             }
             loading.current.complete();
         } else {
         loading.current.continuousStart();
-        let r = await api.alterar(idAlterando, nome, chamada, curso, turma)
+        let r = await api.alterar(idAlterando, produto, categoria, precoDe, preco, avaliacao, descricao , estoque, imagem)
             if(r.erro)
                 toast.dark(r.erro)
             else {
-                toast.dark('Aluno alterado!!!') 
+                toast.dark('Produto alterado!!!') 
                 limparCampos(); 
             }
         loading.current.complete();
@@ -65,35 +69,48 @@ export default function Index() {
     }
 
     function limparCampos(){
-        setNome('');
-        setChamada('');
-        setCurso('');
-        setTurma('');
+        setProduto('');
+        setCategoria('');
+        setPreco('');
+        setAvaliacao('');
+        setImagem('');
+        setPrecoDe('');
+        setDescricao('')
+        setEstoque('');
         setIdAlerando(0)
     }
 
 
     async function deletar(id){
+        loading.current.continuousStart();
         let r = await api.deletar(id);
-        toast.dark('Aluno deletado');
+        toast.dark('Produto deletado');
+        loading.current.complete();
         listar();
     }
 
     async function alterar(item){
-        setNome(item.nm_aluno);
-        setChamada(item.nr_chamada);
-        setCurso(item.nm_curso);
-        setTurma(item.nm_turma);
-        setIdAlerando(item.id_matricula)
+        setProduto(item.nm_produto);
+        setCategoria(item.ds_categoria);
+        setPrecoDe(item.vl_preco_de);
+        setPreco(item.vl_preco_por);
+        setAvaliacao(item.vl_avaliacao);
+        setDescricao(item.ds_produto)
+        setEstoque(item.qtd_estoque);
+        setImagem(item.img_produto);
+        setIdAlerando(item.id_produto)
     }
 
     useEffect( () => { listar() }, [] )
 
+
+    
     return (
+        
         <Container>
             <Container>
             <ToastContainer />
-            <LoadingBar color='#4607ac' ref={loading} />
+            <LoadingBar color='#0b78a7' ref={loading} />
             <Menu />
             <Conteudo>
                 <Cabecalho />
@@ -109,42 +126,42 @@ export default function Index() {
                                     <div className="inputs-cadastro">
                                         <div className="inputs-esquerda">
                                             <div className="format-inputs">
-                                                <div className="produto-nome">Nome: </div>
-                                                <div className="input"> <input type="text" value={nome} onChange={e => setNome(e.target.value)} /> </div>
+                                                <div className="produto-produto">Produto: </div>
+                                                <div className="input"> <input type="text" value={produto} onChange={e => setProduto(e.target.value)} /> </div>
                                             </div>
                                             <div className="format-inputs">
-                                                <div className="produto-chamada"> Categoria: </div>
-                                                <div className="input"><input type="text" value={chamada} onChange={e => setChamada(e.target.value)} /> </div>
+                                                <div className="produto-categoria"> Categoria: </div>
+                                                <div className="input"><input type="text" value={categoria} onChange={e => setCategoria(e.target.value)} /> </div>
                                             </div>
                                             <div className="format-inputs">
                                                 <div className="produto-avaliacao">Avaliação: </div>
-                                                <div className="input"> <input type="text" value={nome} onChange={e => setNome(e.target.value)} /> </div>
+                                                <div className="input"> <input type="text" value={avaliacao} onChange={e => setAvaliacao(e.target.value)} /> </div>
                                             </div>
                                         </div>
 
                                         <div className="inputs-direita">
                                             <div className="format-inputs">
                                                 <div className="produto-preco-de">Preço DE: </div>
-                                                <div className="input"><input type="text" value={turma} onChange={e => setTurma(e.target.value)} /> </div>
+                                                <div className="input"><input type="text" value={precoDe} onChange={e => setPrecoDe(e.target.value)} /> </div>
                                             </div>
                                             <div className="format-inputs">
                                                 <div className="produto-preco-por">Preço POR: </div>
-                                                <div className="input"> <input type="text" value={curso} onChange={e => setCurso(e.target.value)} /> </div>
+                                                <div className="input"> <input type="text" value={preco} onChange={e => setPreco(e.target.value)} /> </div>
                                             </div> 
                                             <div className="format-inputs">
                                                 <div className="estoque">Estoque: </div>
-                                                <div className="input"> <input type="text" value={nome} onChange={e => setNome(e.target.value)} /> </div>
+                                                <div className="input"> <input type="text" value={estoque} onChange={e => setEstoque(e.target.value)} /> </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="inputs-maiores">
                                         <div className="cadastrar-imagens">
                                             <div> Imagem: </div>
-                                            <input/>
+                                            <input type="text" value={imagem} onChange={e => setImagem(e.target.value)} />
                                         </div>
                                         <div className="cadastrar-desc">
                                             <div> Descrição: </div>
-                                            <textarea/>
+                                            <textarea type="text" value={descricao} onChange={e => setDescricao(e.target.value)}/>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +177,7 @@ export default function Index() {
                             <table className="tabela-produtos">
                                 <thead>
                                     <tr>
-                                        <th> </th> 
+                                        <th>  </th> 
                                         <th> ID </th>
                                         <th> Produto </th>
                                         <th> Categoria </th>
@@ -172,17 +189,18 @@ export default function Index() {
                                 </thead>
 
                                 <tbody>
-                                    {alunos.map((item, i) => 
+                                    {catalogo.map((item, i) => 
                                         <tr className= { i % 2 === 0 ? "" : "linha-alternada"}>
-                                            <td> {item.id_matricula} </td>
-                                            <td title={item.nm_aluno }>
-                                                {item.nm_aluno != null && item.nm_aluno.length >= 30 ? item.nm_aluno.substr(0, 30) + '...' : item.nm_aluno } 
+                                            <td className="image-produto"> <img src={item.img_produto} alt= "Sem Imagem" /> </td>
+                                            <td> {item.id_produto} </td>
+                                            <td title={item.nm_produto }>
+                                                {item.nm_produto != null && item.nm_produto.length >= 30 ? item.nm_produto.substr(0, 30) + '...' : item.nm_produto } 
                                             </td>
-                                            <td> {item.nr_chamada} </td>
-                                            <td> {item.nm_turma} </td>
-                                            <td> {item.nm_curso} </td>
+                                            <td> {item.ds_categoria} </td>
+                                            <td> {item.vl_preco_por} </td>
+                                            <td> {item.qtd_estoque} </td>
                                             <td className="buttom-option"> <button onClick={() => alterar(item)}> <img src="/assets/images/edit.svg" alt="" /> </button> </td>
-                                            <td className="buttom-option"> <button onClick={ () => { popups.confirm({ message: "Tem certeza que deseja excluir o aluno " + item.id_matricula + "?" , task: () => deletar(item.id_matricula) }) }  }> <img src="/assets/images/trash.svg" alt="" /> </button> </td>                              
+                                            <td className="buttom-option"> <button onClick={ () => { popups.confirm({ message: "Tem certeza que deseja excluir o Produto " + item.id_produto + "?" , task: () => deletar(item.id_produto) }) }  }> <img src="/assets/images/trash.svg" alt="" /> </button> </td>                              
                                         </tr>
                                     )}
                                     

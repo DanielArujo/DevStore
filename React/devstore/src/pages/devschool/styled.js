@@ -168,8 +168,15 @@ td button{
 tr:hover{
     .buttom-option > button{
     visibility: visible;
+    }
 } 
+
+.image-produto img{
+    height: 5em;
+    width: 5em;
+    border-radius: 50%;
 }
+
 td button:hover{
     opacity: 100%;
 }
