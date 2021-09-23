@@ -83,11 +83,10 @@ export default function Index() {
 
     async function deletar(id){
         loading.current.continuousStart();
-        let r = await api.deletar(id);
+        await api.deletar(id);
         toast.dark('Produto deletado');
         loading.current.complete();
         listar();
-        console.log(r);
     }
 
     async function alterar(item){
