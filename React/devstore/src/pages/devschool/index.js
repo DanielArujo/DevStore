@@ -87,6 +87,7 @@ export default function Index() {
         toast.dark('Produto deletado');
         loading.current.complete();
         listar();
+        console.log(r);
     }
 
     async function alterar(item){
